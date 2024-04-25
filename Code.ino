@@ -37,15 +37,12 @@ static const unsigned char PROGMEM logo_bmp[] = { 0b00000000, 0b11000000,
                                                   0b00000000, 0b00110000 };
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
   display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS);
   display.display();
   delay(2000);
   display.clearDisplay();
-  // display.drawPixel(10, 10, SSD1306_WHITE);
   display.display();
-  // delay(2000);
 }
 int x = 0;
 int y = 0;
@@ -58,65 +55,25 @@ bool ecke = false;
 int reset = 0;
 
 void loop() {
-
   display.drawPixel(y, x, SSD1306_WHITE);
   handel_X(0, 31);
   handel_Y(0, 127);
-  //x += 1;
-  //y += 1;
   display.display();
   Serial.println(y);
   Serial.println(x);
-  if (x == 31 && y == 127){
+  if (x == 31 && y == 127) {
     ecke = true;
-  }else{
+  } else {
     ecke = false;
   }
-  if(ecke){
+  if (ecke) {
     x = 0;
     y = 0;
     display.clearDisplay();
   }
-  // if(!ecke){
-  //   display.drawPixel(y, x, SSD1306_WHITE);
-  // }
 }
 
-// void loop() {
-
-//   //display.clearDisplay();
-//   display.drawPixel(y, x, SSD1306_WHITE);
-//   display.display();
-//   Serial.print("X = ");
-//   Serial.println(x);
-//   Serial.print("Y = ");
-//   Serial.println(y);
-//   if (x < 32) {
-//     x += 1;
-//     y += 2;
-//   }
-//   // if (x >= 32) {
-//   //   y += 1;
-//   //   x = 0;
-//   // }
-//   // if (y > 128) {
-//   //   display.clearDisplay();
-//   //   y = 0;
-//   //   x = 0;
-//   // }
-//   //delay(20);
-// }
-// void loop(){
-//   display.clearDisplay();
-//   display.setTextSize(2);
-//   display.setTextColor(SSD1306_WHITE);
-//   display.setCursor(0,0);
-//   display.println(x);
-//   display.display();
-//   x += 1;
-//   delay(0);
-// }
-void handel_X(int min_x, int max_x){
+void handel_X(int min_x, int max_x) {
   if (x == max_x) {
     x_bool = true;
     _x_bool = false;
@@ -132,7 +89,7 @@ void handel_X(int min_x, int max_x){
     x += 1;
   }
 }
-void handel_Y(int min_y, int max_y){
+void handel_Y(int min_y, int max_y) {
   if (y == max_y) {
     y_bool = true;
     _y_bool = false;
