@@ -44,7 +44,7 @@ void setup() {
   display.clearDisplay();
   display.display();
 }
-int x = 0;
+int x = 1;
 int y = 0;
 bool x_bool = false;
 bool y_bool = false;
